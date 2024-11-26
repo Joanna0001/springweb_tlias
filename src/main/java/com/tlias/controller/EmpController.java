@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * 员工管理Controller
@@ -24,9 +24,9 @@ public class EmpController {
     @GetMapping
     public Result list(@RequestParam(required = true, defaultValue = "1") Integer page,
                        @RequestParam(required = true, defaultValue = "10") Integer pageSize,
-                       String name, Short gender, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDateTime begin,
-                       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDateTime end) {
-        PageBean pageBean = empService.page(page, pageSize);
+                       String name, Short gender, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
+                       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end) {
+        PageBean pageBean = empService.page(page, pageSize, name, gender, begin, end);
         return Result.success(pageBean);
     }
 }

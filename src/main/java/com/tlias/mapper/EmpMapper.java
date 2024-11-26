@@ -2,8 +2,9 @@ package com.tlias.mapper;
 
 import com.tlias.pojo.Emp;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -12,6 +13,6 @@ import java.util.List;
 @Mapper
 public interface EmpMapper {
     /* 获取员工分页列表数据 */
-    @Select("select * from emp")
-    List<Emp> list();
+    List<Emp> list(String name, Short gender, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
+                   @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end);
 }

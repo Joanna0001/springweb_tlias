@@ -1,5 +1,7 @@
 package com.tlias.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.tlias.mapper.EmpMapper;
 import com.tlias.pojo.Emp;
 import com.tlias.pojo.PageBean;
@@ -16,10 +18,15 @@ public class EmpServiceImpl implements EmpService {
 
     @Override
     public PageBean page(Integer page, Integer pageSize) {
-        Long total = empMapper.count();
-        List<Emp> rows = empMapper.page((page - 1) * pageSize, pageSize);
+        // 设置分页参数
+        PageHelper.startPage(page, pageSize);
 
-        // 封装 pageBean 对象
-        return new PageBean(total, rows);
+        // 执行查询
+        List<Emp> empList = empMapper.list();
+        Page<Emp> p = (Page<Emp>) empList;
+
+        // 封装PageBean对象
+        PageBean pageBean = new PageBean(p.getTotal(), p.getResult());
+        return pageBean;
     }
 }

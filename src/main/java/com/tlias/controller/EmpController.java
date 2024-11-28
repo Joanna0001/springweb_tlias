@@ -50,4 +50,11 @@ public class EmpController {
         empService.add(emp);
         return Result.success();
     }
+
+    // 修改员工
+    @PutMapping
+    public Result update(@RequestBody Emp emp) {
+        empService.update(emp);
+        return Result.success();
+    }
 }

@@ -35,4 +35,8 @@ public interface EmpMapper {
     @Update("update emp set username = #{username}, name = #{name}, gender = #{gender}, image = #{image}, job = #{job}, entrydate = #{entrydate}, " +
             "dept_id = #{deptId}, update_time = #{updateTime} where id = #{id}")
     void update(Emp emp);
+
+    // 用户登录
+    @Select("select * from emp where username = #{username} and password = #{password}")
+    Emp getUser(Emp emp);
 }

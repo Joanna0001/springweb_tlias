@@ -24,4 +24,7 @@ public interface EmpService {
     void add(Emp emp);
 
     void update(Emp emp);
+
+    // 用户登录
+    Emp login(Emp emp);
 }

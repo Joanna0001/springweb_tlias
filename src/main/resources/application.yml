@@ -22,4 +22,4 @@ aliyun:
     endpoint: https://oss-cn-hangzhou.aliyuncs.com
     accessKeyId: LTAI4GCH1vX6DKqJWxd6nEuW
     accessKeySecret: yBshYweHOpqDuhCArrVHwIiBKpyqSL
-    bucketName: web-framework
+    bucketName: web-tlias

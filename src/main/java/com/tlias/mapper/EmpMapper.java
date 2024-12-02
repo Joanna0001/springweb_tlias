@@ -1,10 +1,7 @@
 package com.tlias.mapper;
 
 import com.tlias.pojo.Emp;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -39,4 +36,7 @@ public interface EmpMapper {
     // 用户登录
     @Select("select * from emp where username = #{username} and password = #{password}")
     Emp getUser(Emp emp);
+
+    @Delete("delete from emp where dept_id = #{id}")
+    void delByDeptId(Integer id);
 }
